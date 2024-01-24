@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini LIM Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gemini LIM Application</h1>
+    </header>
+    <main>
+        <label for="input">Input Prompt:</label>
+        <input type="text" id="input" placeholder="Enter your prompt...">
+        
+        <label for="image">Choose an image:</label>
+        <input type="file" id="image" accept="image/jpeg, image/png">
+
+        <button onclick="submitForm()">Tell me about the Image</button>
+        <div id="image-container"></div>
+        <div id="response-container"></div>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
