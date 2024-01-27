@@ -2,7 +2,7 @@
 
 import streamlit as st
 from streamlit_option_menu import option_menu
-import home, pdf, PixelMind, chat ,ATS
+import home, PixelMind, code_1 ,ATS,chat
 
 st.set_page_config(
     page_title="Streamlit App",
@@ -21,8 +21,8 @@ class MultiApp:
 def run():
     app = option_menu(
         menu_title=None,
-        options=["Home", "chat", "Pdf AI", "PixelMind AI","ATS"],
-        icons=["house", "chat-dots", "filetype-pdf", "image-alt","file-earmark-person"],
+        options=["Home", "Cube", "Pixel","Solver","ATS"],
+        icons=["house", "lightbulb", "image-alt","robot","file-earmark-person"],
         menu_icon="cast",
         default_index=0,
         orientation="horizontal"
@@ -30,12 +30,12 @@ def run():
 
     if app == "Home":
         home.app()
-    elif app == "chat":
-        chat.app()
-    elif app == "Pdf AI":
-        pdf.app()
-    elif app == "PixelMind AI":
+    elif app == "Cube":
+        code_1.app()
+    elif app == "Pixel":
         PixelMind.app()
+    elif app == "Solver":
+        chat.app()
     elif app == "ATS":
         ATS.app()
 

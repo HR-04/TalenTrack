@@ -1,73 +1,47 @@
-# chat.py
-
-from dotenv import load_dotenv
 import streamlit as st
-import google.generativeai as genai
 import os
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.prompts import PromptTemplate
+import google.generativeai as genai
+from dotenv import load_dotenv
 
 def app():
-    load_dotenv()  # Loading all the environment variables
+  load_dotenv() 
+  # Initialize Gemini-Pro 
+  genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+  model = genai.GenerativeModel('gemini-pro')
 
-    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+  # Gemini uses 'model' for assistant; Streamlit uses 'assistant'
+  def role_to_streamlit(role):
+    if role == "model":
+      return "assistant"
+    else:
+      return role
 
-    # Function to load Gemini Pro Model and Get Responses
-    model = ChatGoogleGenerativeAI(model="gemini-pro", client=genai, temperature=0.3)
+  # Add a Gemini Chat history object to Streamlit session state
+  if "chat" not in st.session_state:
+      st.session_state.chat = model.start_chat(history = [])
 
-    def get_gemini_response(question, conversation_history):
-        user_message = f"User: {question}"
-        conversation_history.append(user_message)
+  # Display Form Title
+  st.title("QueryCraft 🤖🌠")
+  st.text("Unlock placement success! – Your AI guide to personalized ")
+  st.text(" tips and expert answers. Ask, learn, conquer!")
 
-        messages_for_model = [
-            {"role": "user", "content": msg} if "User:" in msg else {"role": "assistant", "content": msg}
-            for msg in conversation_history
-        ]
 
-        # Ensure the conversation history includes both user and assistant messages
-        if not any(msg["role"] == "assistant" for msg in messages_for_model):
-            messages_for_model.append({"role": "assistant", "content": "Assistant: Placeholder response."})
+  # Display chat messages from history above current input box
+  for message in st.session_state.chat.history:
+      with st.chat_message(role_to_streamlit(message.role)):
+          st.markdown(message.parts[0].text)
 
-        response = model(messages_for_model, return_only_outputs=True)
-
-        assistant_message = f"Assistant: {response['output_text'][0]}"
-        conversation_history.append(assistant_message)
-
-        return response
-
-            
-
-    # Initialize streamlit App
-    
-    def clear_chat_history():
-        st.session_state.messages = [{"role": "assistant", "content": "Ask me a question."}]
-
-    st.title("Chat with Gemini🤖")
-    st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
-
-    if "messages" not in st.session_state.keys():
-        st.session_state.messages = [{"role": "assistant", "content": "Ask me a question."}]
-
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
-
-    if user_input_text := st.chat_input():
-        st.session_state.messages.append({"role": "user", "content": user_input_text})
-        with st.chat_message("user"):
-            st.write(user_input_text)
-
-    if st.session_state.messages[-1]["role"] != "assistant":
-        with st.chat_message("assistant"):
-            with st.spinner("Thinking..."):
-                conversation_history = [message["content"] for message in st.session_state.messages]
-                response = get_gemini_response(user_input_text, conversation_history)
-                placeholder = st.empty()
-                full_response = response['output_text'][0]
-                placeholder.markdown(full_response)
-
-        message = {"role": "assistant", "content": full_response}
-        st.session_state.messages.append(message)
-
+  # Accept user's next message, add to context, resubmit context to Gemini
+  if prompt := st.chat_input("I possess a well of knowledge. What would you like to know?"):
+      # Display user's last message
+      st.chat_message("user").markdown(prompt)
+      
+      # Send user entry to Gemini and read the response
+      response = st.session_state.chat.send_message(prompt) 
+      
+      # Display last 
+      with st.chat_message("assistant"):
+          st.markdown(response.text)
+          
 if __name__ == "__main__":
     app()

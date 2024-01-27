@@ -6,31 +6,47 @@ def app():
     
 
     # Add a title to the home page
-    st.title("Welcome to Placement Training App")
+    st.title("Welcome to TalenTrack 🚀✨")
 
     # Add a brief description or introduction
-    st.write(
+    st.text(
         "This app uses AI to provide placement training and help you prepare for interviews."
     )
 
     # Add an image or logo to make it visually appealing
     import os
 
-    image_path = os.path.abspath("img/Interview.jpg")
-    st.image(image_path, caption="Your App Logo", use_column_width=True)
+    st.image("img/Career.png", use_column_width=True)
 
 
-    # Add sections or components relevant to your app
-    st.header("Key Features:")
-    st.markdown("- Feature 1: AI-driven mock interviews")
-    st.markdown("- Feature 2: Resume building assistance")
-    st.markdown("- Feature 3: Technical and soft skills training")
 
-    # Add a call-to-action button to navigate to other pages
-    if st.button("Get Started"):
-        # You can use st.sidebar or st.selectbox for navigation options
-        st.sidebar.selectbox("Select Page", ["Page 1", "Page 2", "Page 3"])
-        # Redirect to the selected page or perform any other action
+    # Features Section
+    st.markdown("## Features")
+    st.subheader("QueryCraft Chatbot 🤖🌠")
+    st.image("img/chat.png", use_column_width=True)
+    st.text("A brief description of how QueryCraft assists users in answering career-related ")
+    st.text("queries instantly.")
+    # Add interactive demo or sample conversation here
+
+    st.subheader("RationalMind AI 🧠⭐")
+    st.image("img/bb.png", use_column_width=True)
+    st.text("Highlight the benefits of Code, Aptitude, and Logical Reasoning guides powered ")
+    st.text("by RationalMind AI.")
+    # Add visuals representing coding challenges and aptitude/logical reasoning questions
+
+    # Smartsage ATS Section
+    st.subheader(" Smartsage ATS 📄✨")
+    st.image("img/attts.png", use_column_width=True)
+    st.text("Showcase the resume ATS features.")
+    st.text("Emphasize how Smartsage ATS optimizes resumes for better visibility in  job ")
+    st.text("applications.")
+
+    # PixelMind AI Section
+    st.subheader(" PixelMind AI 📷🌟")
+    st.image("img/pixel.png", use_column_width=True)
+    st.text("Feature the image chatbot and its unique capability to solve aptitude image doubts.")
+    st.text("A visual representation of how users can upload images and get instant assistance.")
+
 
 if __name__ == "__main__":
     app()

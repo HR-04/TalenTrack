@@ -26,8 +26,9 @@ def app():
         return text
 
     ## streamlit app
-    st.title("Smart ATS")
-    st.text("Improve Your Resume ATS")
+    st.title("SmartSage ATS 📄✨ ")
+    st.text("Unlock new career opportunities with SmartSage ATS  , ") 
+    st.text("Your gateway to success powered by my advanced AI-driven resume optimization.")
     
     # Use st.sidebar for PDF upload and buttons
     with st.sidebar:
@@ -37,9 +38,14 @@ def app():
         if uploaded_file is not None:
             st.write("PDF Uploaded Successfully")
 
-        submit1 = st.button("Tell Me About the Resume")
-        submit = st.button("Overall review")
-        submit3 = st.button("Percentage match")
+        col1,col2,col3 = st.columns(3)
+        
+        with col1:
+            submit1 = st.button("HR Review")
+        with col2:
+            submit = st.button("Overall review")
+        with col3:
+            submit3 = st.button("Percentage match")
 
     input_prompt1 = """
      You are an experienced Technical Human Resource Manager, your task is to review the provided resume against the job description.

@@ -23,7 +23,10 @@ def app():
 
     
 
-    st.title("Gemini LIM Application")
+    st.title("PixelMind AI 📷🌟")
+    st.text("Experience the magic - Your intelligent image companion! ") 
+    st.text("Simply show it a picture, and watch as it unveils insights and answers. ")
+
 
     # Sidebar for image upload and clear history button
     with st.sidebar:
