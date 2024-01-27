@@ -14,7 +14,7 @@ def app():
     )
 
     # Add an image or logo to make it visually appealing
-    st.image("F:\mini_project\img\placement.webp", caption="Your App Logo", use_column_width=True)
+    st.image("img\Interview.jpg", caption="Your App Logo", use_column_width=True)
 
     # Add sections or components relevant to your app
     st.header("Key Features:")

@@ -7,4 +7,3 @@ chromadb
 faiss-cpu
 langchain_google_genai
 streamlit-option-menu
-ChatMessage
