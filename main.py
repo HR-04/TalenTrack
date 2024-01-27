@@ -7,7 +7,7 @@ from google.auth.transport.requests import Request
 from google.auth.credentials import Credentials
 
 # Load your service account credentials
-creds = Credentials.from_service_account_file("C:\Users\ADMIN\Downloads\travis-391111-e89a1d72036f.json", scopes=['https://www.googleapis.com/auth/generativelanguage.apiAccess'])
+creds = Credentials.from_service_account_file(r"C:\Users\ADMIN\Downloads\travis-391111-e89a1d72036f.json", scopes=['https://www.googleapis.com/auth/generativelanguage.apiAccess'])
 
 # Print the current scopes
 print(creds.scopes)
