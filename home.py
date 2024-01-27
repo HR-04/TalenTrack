@@ -16,7 +16,7 @@ def app():
     # Add an image or logo to make it visually appealing
     import os
 
-    image_path = os.path.abspath("img\Interview.jpg")
+    image_path = os.path.abspath("img/Interview.jpg")
     st.image(image_path, caption="Your App Logo", use_column_width=True)
 
 
