@@ -7,7 +7,7 @@ from google.auth.transport.requests import Request
 from google.oauth2 import service_account
 
 # Path to your service account key file
-key_path = r"C:\Users\ADMIN\Downloads\travis-391111-e89a1d72036f.json"
+key_path = "img\travis-391111-e89a1d72036f.json"
 
 # Load credentials
 try:
