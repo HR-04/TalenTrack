@@ -14,7 +14,11 @@ def app():
     )
 
     # Add an image or logo to make it visually appealing
-    st.image("img\Interview.jpg", caption="Your App Logo", use_column_width=True)
+    import os
+
+    image_path = os.path.abspath("img\Interview.jpg")
+    st.image(image_path, caption="Your App Logo", use_column_width=True)
+
 
     # Add sections or components relevant to your app
     st.header("Key Features:")
