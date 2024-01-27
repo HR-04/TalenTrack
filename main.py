@@ -3,6 +3,15 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import home, PixelMind, code_1 ,ATS,chat
+from google.auth.transport.requests import Request
+from google.auth.credentials import Credentials
+
+# Load your service account credentials
+creds = Credentials.from_service_account_file("C:\Users\ADMIN\Downloads\travis-391111-e89a1d72036f.json", scopes=['https://www.googleapis.com/auth/generativelanguage.apiAccess'])
+
+# Print the current scopes
+print(creds.scopes)
+
 
 st.set_page_config(
     page_title="Streamlit App",
