@@ -1,24 +1,8 @@
-# main.py
+
 
 import streamlit as st
 from streamlit_option_menu import option_menu
 import home, PixelMind, code_1 ,ATS,chat
-# from google.auth import exceptions
-# from google.auth.transport.requests import Request
-# from google.oauth2 import service_account
-
-# # Path to your service account key file
-# key_path = "img\travis-391111-e89a1d72036f.json"
-
-# # Load credentials
-# try:
-#     creds, project = service_account.Credentials.from_service_account_file(
-#         key_path, scopes=['https://www.googleapis.com/auth/generativelanguage.apiAccess']
-#     ).with_access_token(Request()).__dict__['_token_uri']
-# except exceptions.GoogleAuthError as err:
-#     # Handle authentication error
-#     print(f"Authentication error: {err}")
-#     creds = None
 
 
 

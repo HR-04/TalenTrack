@@ -1,4 +1,4 @@
-# PixelMind.py
+
 
 from dotenv import load_dotenv
 from PIL import Image
