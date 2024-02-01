@@ -1,28 +1,57 @@
-# ATS.py
+
 
 import streamlit as st
 import google.generativeai as genai
 import os
-import PyPDF2 as pdf
 from dotenv import load_dotenv
-import json
+
 
 def app():
     load_dotenv()  ## load all our environment variables
 
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+    
+        ## streamlit app
+    st.title("RationalMind AI 🧠⭐ ")
+    st.text("Enter the realm of coding brilliance – Your AI companion for real-time,  ")
+    st.text("scenario-based challenges! Unleash your coding prowess with five dynamic challenges")  
 
     def get_gemini_response(prompt):
         model = genai.GenerativeModel('gemini-pro')
         response = model.generate_content(prompt)
         return response.text
 
-    ## streamlit app
-    st.title("RationalMind AI 🧠⭐ ")
-    st.text("Enter the realm of coding brilliance – Your AI companion for real-time,  ")
-    st.text("scenario-based challenges! Unleash your coding prowess with five dynamic challenges")
 
-    
+
+    # Gemini uses 'model' for assistant; Streamlit uses 'assistant'
+    def role_to_streamlit(role):
+        if role == "model":
+            return "assistant"
+        else:
+            return role
+    model = genai.GenerativeModel('gemini-pro')
+      # Add a Gemini Chat history object to Streamlit session state
+    if "chat" not in st.session_state:
+        st.session_state.chat = model.start_chat(history = [])
+        
+        # Display chat messages from history above current input box
+    for message in st.session_state.chat.history:
+        with st.chat_message(role_to_streamlit(message.role)):
+            st.markdown(message.parts[0].text)
+
+    # Accept user's next message, add to context, resubmit context to Gemini
+    if prompt := st.chat_input("Try Your Code Here..."):
+        # Display user's last message
+        st.chat_message("user").markdown(prompt)
+        
+        # Send user entry to Gemini and read the response
+        response = st.session_state.chat.send_message(prompt) 
+        
+        # Display last 
+        with st.chat_message("assistant"):
+            st.markdown(response.text)
+        
+     
     
     
     # Use st.sidebar for PDF upload and buttons
@@ -47,6 +76,11 @@ def app():
             submit4 = st.button("Aptitude")
         with col2:
             submit5 = st.button("Logical Reasoning")
+        
+        st.text("------------------------------------")
+        # Add a button to clear chat history
+        if st.button("Clear History"):
+            st.session_state.chat.history.clear()
 
     input_prompt1 = """
      You are an AI programming tutor specialized in Python Programming language. Your mission is to facilitate user understanding and
