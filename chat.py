@@ -2,23 +2,6 @@ import streamlit as st
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
-# from google.auth import exceptions
-# from google.auth.transport.requests import Request
-# from google.oauth2 import service_account
-
-# # Path to your service account key file
-# key_path = "img\travis-391111-e89a1d72036f.json"
-
-# # Load credentials
-# try:
-#     creds, project = service_account.Credentials.from_service_account_file(
-#         key_path, scopes=['https://www.googleapis.com/auth/generativelanguage.apiAccess']
-#     ).with_access_token(Request()).__dict__['_token_uri']
-# except exceptions.GoogleAuthError as err:
-#     # Handle authentication error
-#     print(f"Authentication error: {err}")
-#     creds = None
-
 
 def app():
   load_dotenv() 
@@ -49,7 +32,7 @@ def app():
           st.markdown(message.parts[0].text)
 
   # Accept user's next message, add to context, resubmit context to Gemini
-  if prompt := st.chat_input("I possess a well of knowledge. What would you like to know?"):
+  if prompt := st.chat_input("Message QueryCrafter..."):
       # Display user's last message
       st.chat_message("user").markdown(prompt)
       
@@ -59,6 +42,10 @@ def app():
       # Display last 
       with st.chat_message("assistant"):
           st.markdown(response.text)
+          
+  with st.sidebar:
+    if st.button("Clear History"):
+            st.session_state.chat.history.clear()
           
 if __name__ == "__main__":
     app()
