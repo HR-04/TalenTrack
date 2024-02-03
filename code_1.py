@@ -40,7 +40,7 @@ def app():
             st.markdown(message.parts[0].text)
 
     # Accept user's next message, add to context, resubmit context to Gemini
-    if prompt := st.chat_input("Ask Cube..."):
+    if prompt := st.chat_input("Interact With Cube..."):
         # Display user's last message
         st.chat_message("user").markdown(prompt)
         
