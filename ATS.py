@@ -1,5 +1,5 @@
 import os
-
+import PyPDF2 as pdf
 import streamlit as st
 import google.generativeai as genai
 from dotenv import load_dotenv
