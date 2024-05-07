@@ -25,7 +25,7 @@ def app():
     ## streamlit app
     st.title("SmartSage ATS 📄✨ ")
     st.text("Unlock new career opportunities with SmartSage ATS  , ") 
-    st.text("Your gateway to success powered by my advanced AI-driven resume optimization.")
+    st.text("Your gateway to success powered by advanced AI-driven resume optimization.")
     
     # Use st.sidebar for PDF upload and buttons
     with st.sidebar:
@@ -49,11 +49,11 @@ def app():
     
     Your task is to perform the following action:
     
-    1 - Mention for what Job or role you're going to hire a person.The role must be taken from {jd}/
-    2 - Understand and Review the {text} user uploaded and compare it with the {jd} provided./
+    1 - Mention for what Job or role you're going to hire a person.The role must be taken from job description/
+    2 - Understand and Review the resume user uploaded and compare it with the job description provided./
     3 - share your professional evaluation on whether the candidate's profile aligns with the role./
     4 - Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements./
-    5 - Only provide response for the provided {jd} and it's corresponding {text}./
+    5 - Only provide response for the provided job description and it's corresponding resume./
     
     resume : {text}
     job description : {jd}
