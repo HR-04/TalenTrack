@@ -49,10 +49,11 @@ def app():
     
     Your task is to perform the following action:
     
-    1 - Understand and Review the resume user uploaded and compare it with the job description provided./
-    2 - share your professional evaluation on whether the candidate's profile aligns with the role./
-    3 - Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements./
-    4 - Only provide response for the provided job description and it's corresponding Resume./
+    1 - Mention for what Job or role you're going to hire a person./
+    2 - Understand and Review the resume user uploaded and compare it with the job description provided./
+    3 - share your professional evaluation on whether the candidate's profile aligns with the role./
+    4 - Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements./
+    5 - Only provide response for the provided job description and it's corresponding Resume./
     
     resume : {text}
     job description : {jd}
@@ -68,7 +69,8 @@ def app():
     3 - Assign the percentage Matching based on job description and the missing keywords with high accuracy.
     
     The Format Should be as,
-    "JD Match":"%", "MissingKeywords": [], "Profile Summary":"" 
+    [ "JD Match":"%", "MissingKeywords": [], "Profile Summary":"" ]
+    
     resume: {text}
     job description: {jd}
     """
@@ -78,7 +80,7 @@ def app():
     
     1 - Your task is to evaluate the resume against the provided job description./
     2 - Give me the percentage of match if the resume matches with the job description./
-    3 - First the output should come as percentage and then keywords missing and Overall final thoughts./
+    3 - First the output should come as percentage and then keywords missing and Overall final thoughts of that particular resume with job description. /
     
     resume: {text}
     job description: {jd}
