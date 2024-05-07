@@ -45,25 +45,43 @@ def app():
             submit3 = st.button("Percentage match")
 
     input_prompt1 = """
-     You are an experienced Technical Human Resource Manager, your task is to review the provided resume against the job description.
-      Please share your professional evaluation on whether the candidate's profile aligns with the role.
-     Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements.
+    You are an experienced Technical Human Resource Manager.You're going to hire a person with job description./
+    
+    Your task is to perform the following action:
+    
+    1 - Understand and Review the resume user uploaded and compare it with the job description provided./
+    2 - share your professional evaluation on whether the candidate's profile aligns with the role./
+    3 - Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements./
+    4 - Only provide response for the provided job description and it's corresponding Resume./
+    
+    resume : {text}
+    job description : {jd}
     """
 
     input_prompt = """
-    Hey Act Like a skilled or very experienced ATS (Application Tracking System) with a deep understanding of the tech field, software engineering, data science, data analyst, and big data engineer.
-    Your task is to evaluate the resume based on the given job description. You must consider the job market is very competitive, and you should provide the best assistance for improving the resumes.
-    Assign the percentage Matching based on JD and the missing keywords with high accuracy.
     
-    {"JD Match":"%","MissingKeywords": [],"Profile Summary":""}
-    resume:{text}
-    description:{jd}
+    Hey Act Like a skilled or very experienced ATS (Application Tracking System) with a deep understanding of the tech field,
+    software engineering, data science, data analyst, and big data engineer.
+    
+    1 - Your task is to evaluate the resume based on the given job description./
+    2 - You must consider the job market is very competitive, and you should provide the best assistance for improving the resumes./
+    3 - Assign the percentage Matching based on job description and the missing keywords with high accuracy.
+    
+    The Format Should be as,
+    "JD Match":"%", "MissingKeywords": [], "Profile Summary":"" 
+    resume: {text}
+    job description: {jd}
     """
 
     input_prompt3 = """
-    You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of data science and ATS functionality,
-    your task is to evaluate the resume against the provided job description. give me the percentage of match if the resume matches
-    the job description. First the output should come as percentage and then keywords missing and last final thoughts.
+    You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of data science and ATS functionality./
+    
+    1 - Your task is to evaluate the resume against the provided job description./
+    2 - Give me the percentage of match if the resume matches with the job description./
+    3 - First the output should come as percentage and then keywords missing and Overall final thoughts./
+    
+    resume: {text}
+    job description: {jd}
     """
 
     if submit1:
