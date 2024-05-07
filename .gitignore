@@ -1,3 +1,4 @@
 virtual_env
 __pycache__
 faiss_index
+venv
