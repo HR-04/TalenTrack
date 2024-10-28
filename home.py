@@ -16,7 +16,7 @@ def app():
     # Add an image or logo to make it visually appealing
     import os
 
-    st.image("img/career.jpg", use_column_width=True)
+    st.image("img/career.png", use_column_width=True)
 
 
 
