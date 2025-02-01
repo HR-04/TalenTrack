@@ -1,2 +1,3 @@
 myenv
-F:\TalenTrack\.env
+*.env
+*.json
